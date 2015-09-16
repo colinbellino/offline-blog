@@ -9,36 +9,14 @@
  */
 angular.module('offlineBlogApp')
 
-  .controller('PostsCtrl', function ($state) {
-    let imagePath = 'http://placehold.it/48x48';
+  .controller('PostsCtrl', function ($state, Posts) {
 
-    this.posts = [
-      {
-        id: 1,
-        avatar : imagePath,
-        title: 'Post #1',
-        author_name: 'Author 1'
-      },
-      {
-        id: 2,
-        avatar : imagePath,
-        title: 'Post #1',
-        author_name: 'Author 2'
-      },
-      {
-        id: 3,
-        avatar : imagePath,
-        title: 'Post #1',
-        author_name: 'Author 3'
-      },
-      {
-        id: 4,
-        avatar : imagePath,
-        title: 'Post #1',
-        author_name: 'Author 4'
-      }
-    ];
+    // load the posts
+    Posts.all().then(function(posts) {
+      this.posts = posts;
+    }.bind(this));
 
+    // redirect to a specific post
     this.goToPost = function (post) {
       $state.go('post', { post_id: post.id });
     };

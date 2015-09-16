@@ -9,14 +9,13 @@
  */
 angular.module('offlineBlogApp')
 
-  .controller('PostCtrl', function () {
-    let imagePath = 'http://placehold.it/48x48';
-
-    this.post = {
-      id: 1,
-      avatar : imagePath,
-      title: 'Post #1',
-      author_name: 'Author 1',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste eos ab quaerat at quia tempore unde nulla autem ea, aspernatur! Earum illo deserunt aperiam, repellendus libero dolore quae debitis delectus.'
-    };
+  .controller('PostCtrl', function ($state, $stateParams, Posts) {
+    // load the post
+    Posts.one($stateParams.post_id).then(function(post) {
+      this.post = post;
+    }.bind(this))
+    // or redirect to the posts
+    .catch(function() {
+      $state.go('posts');
+    });
   });
