@@ -9,15 +9,19 @@
  */
 angular.module('offlineBlogApp')
 
-  .controller('PostsCtrl', function ($state, Posts) {
+  .controller('PostsCtrl', function ($rootScope, $state, Posts) {
 
-    // load the posts
-    Posts.all().then(function(posts) {
+    // attach the posts and update the title
+    this._initPosts = function (posts) {
       this.posts = posts;
-    }.bind(this));
+      $rootScope.pageTitle = 'Posts';
+    };
 
     // redirect to a specific post
     this.goToPost = function (post) {
       $state.go('post', { post_id: post.id });
     };
+
+    // load the posts
+    Posts.all().then(this._initPosts.bind(this));
   });
