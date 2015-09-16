@@ -12,7 +12,7 @@ angular.module('offlineBlogApp')
   .controller('PostsCtrl', function ($rootScope, $state, Posts) {
 
     // attach the posts and update the title
-    this._initPosts = function (posts) {
+    var _initPosts = function (posts) {
       this.posts = posts;
       $rootScope.pageTitle = 'Posts';
     };
@@ -23,5 +23,5 @@ angular.module('offlineBlogApp')
     };
 
     // load the posts
-    Posts.all().then(this._initPosts.bind(this));
+    Posts.all().then(_initPosts.bind(this));
   });
