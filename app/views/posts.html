@@ -1,0 +1,15 @@
+<!-- TODO: make this work -->
+<!-- <md-subheader class="md-primary">{{ ::'September 2015' }}</md-subheader> -->
+<md-list>
+  <md-list-item
+    ng-repeat="post in postsCtrl.posts"
+    ng-click="postsCtrl.goToPost(post, $event)"
+    class="md-3-line"
+  >
+    <img ng-src="{{ ::post.avatar }}" alt="{{ ::post.author_name }}" class="md-avatar">
+    <div class="md-list-item-text">
+      <h3>{{ ::post.title }}</h3>
+      <p>{{ ::post.author_name }}</p>
+    </div>
+  </md-list-item>
+</md-list>
