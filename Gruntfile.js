@@ -413,7 +413,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>/',
           dest: '<%= yeoman.dist %>/',
-          src: ['offline-support.js']
+          src: ['offline-support.js', 'posts.json']
         }]
       },
       styles: {

@@ -4,10 +4,9 @@
 'use strict';
 
 var urlsToCache = [
-  '/',
-  'https://offline-blog.firebaseio.com/'
+  '/'
 ];
-var CACHE_NAME = 'posts-v1';
+var CACHE_NAME = 'posts-v3';
 
 self.addEventListener('install', function(event) {
   console.debug('Event triggered: install');

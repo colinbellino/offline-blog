@@ -10,13 +10,13 @@
 angular.module('offlineBlogApp')
 
   .service('Posts', function ($q, $http) {
-    var baseUrl = 'https://offline-blog.firebaseio.com';
+    var baseUrl = './';
     var extension = '.json';
 
     // fetch all the posts
     this.all = function() {
       var deferred = $q.defer();
-      var allPostsUrl = baseUrl + "/posts" + extension;
+      var allPostsUrl = baseUrl + "posts" + extension;
 
       $http.get(allPostsUrl).then(function(posts) {
         deferred.resolve(posts.data);

@@ -14,7 +14,7 @@ angular.module('offlineBlogApp')
     // attach the post and update the title
     var _initPost = function (post) {
       this.post = post;
-      $rootScope.pageTitle = post.title;
+      $rootScope.pageTitle = 'Post by ' + post.author_name;
     };
 
     // load the post

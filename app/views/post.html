@@ -1,9 +1,9 @@
+<img ng-src="{{ ::postCtrl.post.avatar }}" alt="{{ ::postCtrl.post.author_name }}">
 <md-list ng-show="postCtrl.post">
   <md-list-item class="md-3-line">
-    <img ng-src="{{ ::postCtrl.post.avatar }}" alt="{{ ::postCtrl.post.author_name }}" class="md-avatar">
     <div class="md-list-item-text">
-      <h3>{{ ::postCtrl.post.title }}</h3>
-      <p>{{ ::postCtrl.post.author_name }}</p>
+      <h3>{{ ::postCtrl.post.author_name }}</h3>
+      <p>{{ ::postCtrl.post.title }}</p>
     </div>
   </md-list-item>
 </md-list>
