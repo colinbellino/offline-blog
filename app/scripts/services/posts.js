@@ -13,10 +13,12 @@ angular.module('offlineBlogApp')
     var baseUrl = 'https://offline-blog.firebaseio.com';
     var extension = '.json';
 
+    // fetch all the posts
     this.all = function() {
-      let deferred = $q.defer();
+      var deferred = $q.defer();
+      var allPostsUrl = baseUrl + "/posts" + extension;
 
-      $http.get(`${baseUrl}/posts${extension}`).then(function(posts) {
+      $http.get(allPostsUrl).then(function(posts) {
         deferred.resolve(posts.data);
       })
       .catch(function(error) {
@@ -26,14 +28,16 @@ angular.module('offlineBlogApp')
       return deferred.promise;
     };
 
+    // fetch one post
     this.one = function(id) {
-      let deferred = $q.defer();
+      var deferred = $q.defer();
 
-      $http.get(`${baseUrl}/posts${extension}?id=${id}`).then(function(post) {
-        deferred.resolve(post.data[0]);
-      })
-      .catch(function(error) {
-        deferred.reject(error);
+      this.all().then(function(posts) {
+        posts.forEach(function(post) {
+          if (post.id === id) {
+            deferred.resolve(post);
+          }
+        });
       });
 
       return deferred.promise;

@@ -36,4 +36,15 @@ angular
       });
 
       $urlRouterProvider.otherwise('/posts');
+  })
+
+  .run(function offlineServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('offline-support.js', { scope: '/' })
+        .catch(function(e) {
+          console.error('SW registration failed:', e);
+        });
+    } else {
+      console.error('SW not supported');
+    }
   });
