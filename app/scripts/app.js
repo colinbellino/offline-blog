@@ -38,9 +38,9 @@ angular
       $urlRouterProvider.otherwise('/posts');
   })
 
-  .run(function offlineServiceWorker() {
+  .run(function offlineServiceWorker($window) {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('offline-support.js', { scope: '/' })
+      navigator.serviceWorker.register('offline-support.js', { scope: $window.location.pathname })
         .catch(function(e) {
           console.error('SW registration failed:', e);
         });

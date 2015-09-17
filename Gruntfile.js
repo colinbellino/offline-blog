@@ -67,6 +67,14 @@ module.exports = function (grunt) {
       }
     },
 
+    // Generate the Github pages dist
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
+    },
+
     // The actual grunt server settings
     connect: {
       options: {
